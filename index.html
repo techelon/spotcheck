@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Downloader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-[#121212] text-white">
+    <!-- Notification Alert -->
+    <div id="notification" class="fixed top-4 right-4 z-50 transition-all duration-500 transform translate-x-full">
+        <div class="px-6 py-4 rounded-lg shadow-lg bg-green-500 text-white flex items-center space-x-2">
+            <span id="notificationMessage" class="text-sm font-medium"></span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="relative bg-gradient-to-b from-[#1DB954] to-[#121212] pt-20 pb-40 px-4">
+        <div class="max-w-4xl mx-auto text-center relative">
+            <div class="flex items-center justify-center mb-8">
+                <div class="bg-white p-4 rounded-full shadow-xl transform hover:scale-110 transition-transform duration-300">
+                    <img src="spotify-logo.png" alt="Spotify Logo" class="w-16 h-16">
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Spotify Downloader
+            </h1>
+            <p class="text-lg md:text-xl opacity-90 mb-8">
+                Download your favorite Spotify songs in high quality
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto px-4 -mt-24 relative z-10">
+        <div class="bg-[#282828] rounded-xl p-6 md:p-8 shadow-2xl">
+            <form id="downloadForm" class="flex flex-col md:flex-row gap-4">
+                <div class="flex-1 relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#1DB954] to-[#1ed760] rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+                    <div class="relative flex items-center">
+                        <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                        <input
+                            id="urlInput"
+                            type="text"
+                            placeholder="Paste Spotify song URL here..."
+                            class="w-full bg-[#3E3E3E] text-white placeholder-gray-400 pl-12 pr-12 py-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1DB954] transition-all duration-300"
+                        >
+                        <button
+                            type="button"
+                            id="pasteButton"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors duration-300"
+                        >
+                            <i data-lucide="clipboard" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+                <button
+                    type="submit"
+                    id="downloadButton"
+                    class="bg-[#1DB954] text-white px-8 py-4 rounded-lg hover:bg-[#1ed760] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                    <i data-lucide="download" class="w-5 h-5"></i>
+                    Download
+                </button>
+            </form>
+
+            <!-- Result Container -->
+            <div id="resultContainer" class="mt-8 hidden">
+                <div class="relative overflow-hidden bg-[#3E3E3E] rounded-xl p-6 group">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="relative group/image">
+                            <img
+                                id="trackCover"
+                                src=""
+                                alt=""
+                                class="w-56 h-56 rounded-lg shadow-2xl transform group-hover/image:scale-105 transition-transform duration-300"
+                            >
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex flex-col items-center md:items-start">
+                                <h3 id="trackTitle" class="text-3xl font-bold mb-3 group-hover:text-[#1DB954] transition-colors duration-300 text-center md:text-left"></h3>
+                                <p id="trackArtist" class="text-xl text-gray-300 mb-4"></p>
+                                <div class="flex flex-wrap gap-4 mb-6 justify-center md:justify-start">
+                                    <span id="trackAlbum" class="flex items-center gap-2 text-sm text-gray-400">
+                                        <i data-lucide="music-4" class="w-4 h-4"></i>
+                                        <span></span>
+                                    </span>
+                                    <span id="trackDate" class="flex items-center gap-2 text-sm text-gray-400">
+                                        <i data-lucide="clock" class="w-4 h-4"></i>
+                                        <span></span>
+                                    </span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <a
+                                        id="downloadLink"
+                                        href=""
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="inline-flex items-center gap-2 bg-[#1DB954] text-white px-8 py-4 rounded-full hover:bg-[#1ed760] transition-all duration-300 hover:scale-105 active:scale-95"
+                                    >
+                                        <i data-lucide="download" class="w-5 h-5"></i>
+                                        Download Track
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
